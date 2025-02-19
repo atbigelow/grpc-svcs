@@ -1,0 +1,29 @@
+[project]
+name = "grpc-svcs"
+version = "0.1.1"
+description = "A GRPC integration for SVCS"
+license = "MIT"
+license-files = ["LICENSE"]
+readme = "README.md"
+authors = [{ name = "August Bigelow", email = "dev@atbigelow.com" }]
+requires-python = ">=3.11"
+dependencies = ["grpc-interceptor>=0.15.4", "grpcio>=1.70.0", "svcs>=25.1.0"]
+
+[project.urls]
+GitHub = "https://github.com/atbigelow/grpc-svcs"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/grpc_svcs"]
+
+[dependency-groups]
+dev = ["ruff>=0.9.6"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint.isort]
+known-first-party = ["grpc_svcs", "tests"]
