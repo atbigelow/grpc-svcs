@@ -1,13 +1,13 @@
 [project]
 name = "grpc-svcs"
-version = "0.1.1"
-description = "A GRPC integration for SVCS"
+version = "0.1.2"
+description = "A gRPC integration for SVCS"
 license = "MIT"
 license-files = ["LICENSE"]
 readme = "README.md"
 authors = [{ name = "August Bigelow", email = "dev@atbigelow.com" }]
 requires-python = ">=3.11"
-dependencies = ["grpc-interceptor>=0.15.4", "grpcio>=1.70.0", "svcs>=25.1.0"]
+dependencies = ["grpc-interceptor>=0.15.4", "grpcio>=1.60.0", "svcs>=25.1.0"]
 
 [project.urls]
 GitHub = "https://github.com/atbigelow/grpc-svcs"

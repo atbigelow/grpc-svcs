@@ -7,12 +7,18 @@ _containers: contextvars.ContextVar[Container] = contextvars.ContextVar("svcs_co
 
 
 def svcs_from() -> Container:
+    """
+    Get the container for the current gRPC request Context.
+    """
     return _containers.get()
 
 
-# TODO: Use the built-in grpc.ServerInterceptor
+# TODO: Use the built-in grpc.ServerInterceptor instead of adding the grpc-interceptor dependency
 class SVCSInterceptor(ServerInterceptor):
+    """A sync gRPC server interceptor for svcs."""
+
     def __init__(self, registry: Registry | None = None):
+        """Create an interceptor to handle svcs Container creation."""
         if registry is None:
             registry = Registry()
 
@@ -31,9 +37,12 @@ class SVCSInterceptor(ServerInterceptor):
             container.close()
 
 
-# TODO: Use the built-in grpc.aio.ServerInterceptor
+# TODO: Use the built-in grpc.aio.ServerInterceptor instead of adding the grpc-interceptor dependency
 class SVCSAsyncInterceptor(AsyncServerInterceptor):
+    """An async gRPC interceptor for svcs."""
+
     def __init__(self, registry: Registry | None = None):
+        """Create an async interceptor to handle svcs Container creation."""
         if registry is None:
             registry = Registry()
 
